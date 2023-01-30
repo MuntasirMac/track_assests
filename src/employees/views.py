@@ -58,8 +58,9 @@ class UpdateEmployeeView(APIView):
             print(update_employee)
 
             if update_employee: 
-                update_employee = Employee.objects.filter(uuid = employee_uid).first()         
-                return Response({'data' : model_to_dict(update_employee)},status=status.HTTP_201_CREATED)
+                update_employee = Employee.objects.filter(uuid = employee_uid).first()
+                updated_employee = EmployeeDetailSerializer(update_employee)       
+                return Response({'data' : updated_employee.data},status=status.HTTP_201_CREATED)
             else : 
                 return Response({'data': "Unable To Update Data"}, status=status.HTTP_400_BAD_REQUEST) 
         else :    
