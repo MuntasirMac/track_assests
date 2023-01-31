@@ -20,9 +20,10 @@ class AssignedProduct(models.Model):
         (STATE_ABNORMAL, 'Abnormal'),
         (STATE_DEAD, 'Dead'),
     ]
+    tag = models.CharField(max_length=16)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     assigned_date = models.DateTimeField(auto_now=False, auto_now_add=True)
     assigned_to_employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
     assigned_state = models.CharField(max_length=1, choices=STATE_CHOICES, default=STATE_OKAY)
-    returned_date = models.DateTimeField(auto_now=True, null=True)
-    returned_state = models.CharField(max_length=1, choices=STATE_CHOICES, default=STATE_OKAY)
+    returned_date = models.DateTimeField(blank=True, null=True)
+    returned_state = models.CharField(max_length=1, choices=STATE_CHOICES, blank=True, null=True)

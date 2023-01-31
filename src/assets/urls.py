@@ -4,6 +4,8 @@ UpdateProductView,
 GetAllProductView,
 GetProductDetailsView,
 DeleteProductView,
+AssignToEmployeeView,
+ReturnAssetView
 )
 
 urlpatterns = [
@@ -11,5 +13,7 @@ urlpatterns = [
     path('get-all-product/', GetAllProductView.as_view(), name='all-product'),
     path('update-product/<str:product_uid>/', UpdateProductView.as_view(), name='update-product'),
     path('product-details/<str:product_uid>/', GetProductDetailsView.as_view(), name='product-details'),
-    path('delete-product/<str:product_uid>/', DeleteProductView.as_view(), name='delete-product'),   
+    path('delete-product/<str:product_uid>/', DeleteProductView.as_view(), name='delete-product'),  
+    path('assign-product/', AssignToEmployeeView.as_view(), name='assign-product'),  
+    path('update-product/', ReturnAssetView.as_view(), name='update-product'),  
 ]
